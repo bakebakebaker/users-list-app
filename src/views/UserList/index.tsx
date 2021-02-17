@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, SyntheticEvent } from "react";
-import { Spinner, Wrapper } from "../../common-components";
+import { Spinner, Wrapper, MainHeader } from "../../common-components";
 import { User } from "../../types";
 import List from "./List";
 import SearchBar from "./SearchBar";
@@ -49,7 +49,7 @@ const UsersList = () => {
 
   return (
     <Wrapper>
-      <h1 title="main-header">Users list</h1>
+      <MainHeader title="main-header" text="Users list" />
       <SearchBar
         value={searchInput}
         handleChange={(event: SyntheticEvent<HTMLInputElement>) => {
