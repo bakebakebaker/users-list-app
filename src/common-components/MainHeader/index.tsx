@@ -9,6 +9,7 @@ interface Props {
 const Header = styled.h1`
   margin: ${variables.mainSpacing} 0;
   font-weight: 600;
+  font-size: 2.5rem;
 `;
 
 const MainHeader = ({ text, title }: Props) => (

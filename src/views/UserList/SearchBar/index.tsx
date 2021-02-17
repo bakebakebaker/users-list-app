@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from "react";
 import styled from "styled-components";
+import { variables } from "../../../style-config/variables";
 
 interface Props {
   value: string;
@@ -8,8 +9,9 @@ interface Props {
 
 const StyledInput = styled.input`
   font-size: 1.3rem;
-  margin-bottom: 20px;
+  margin-bottom: ${variables.mainSpacing};
   border: 2px solid black;
+  min-width: 250px;
 `;
 
 const SearchInput = ({ value, handleChange }: Props) => {
