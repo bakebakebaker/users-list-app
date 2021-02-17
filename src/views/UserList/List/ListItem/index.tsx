@@ -11,7 +11,9 @@ const ListItem = ({ item, key }: Props) => {
   const OrderedListItem = styled.li`
     ::marker {
       color: ${variables.lightGray};
+      padding-right: ${variables.smallSpacing};
     }
+    margin-bottom: ${variables.smallSpacing};
   `;
 
   const Nickname = styled.span`
@@ -25,7 +27,7 @@ const ListItem = ({ item, key }: Props) => {
   `;
   return (
     <OrderedListItem key={key}>
-      <Name>{item.name}</Name> <Nickname>@ {item.username}</Nickname>
+      <Name>{item.name}</Name> <Nickname>@{item.username}</Nickname>
     </OrderedListItem>
   );
 };
