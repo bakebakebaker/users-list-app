@@ -19,7 +19,6 @@ const UsersList = () => {
         });
         const data = await res.json();
         setUsers(data);
-        console.log("data has been set");
         setLoading(false);
       } catch (e) {
         console.log(e);
@@ -33,11 +32,9 @@ const UsersList = () => {
     };
   }, []);
 
-  const filteredUsers = useMemo(() => {
-    return users?.filter((user: User) => {
-      return user.name.toLowerCase().includes(searchInput.toLowerCase());
-    });
-  }, [users, searchInput]);
+  const filteredUsers = users?.filter((user: User) => {
+    return user.name.toLowerCase().includes(searchInput.toLowerCase());
+  });
 
   const getList = () => {
     if (loading) {

@@ -16,14 +16,16 @@ const ListItem = ({ item, key }: Props) => {
 
   const Nickname = styled.span`
     color: ${variables.lightGray};
+    padding-left: ${variables.smallSpacing};
   `;
 
   const Name = styled.span`
     font-weight: 600;
+    font-size: ${variables.fontBigger};
   `;
   return (
     <OrderedListItem key={key}>
-      <Name>{item.name}</Name> <Nickname>@{item.username}</Nickname>
+      <Name>{item.name}</Name> <Nickname>@ {item.username}</Nickname>
     </OrderedListItem>
   );
 };
