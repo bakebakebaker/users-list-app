@@ -1,4 +1,7 @@
-/*body {
+import { createGlobalStyle } from "styled-components";
+
+const StyleConfig = createGlobalStyle`
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -7,7 +10,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}*/
+
+h1, ol, input{
+  margin: 0;
+}
+`;
+
+export default StyleConfig;

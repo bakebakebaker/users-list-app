@@ -1,5 +1,20 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
+import styled from 'styled-components';
 
-const SearchBar = () => <input />;
+interface Props {
+  value: string;
+  handleChange: (event: SyntheticEvent<HTMLInputElement>) => void;
+}
 
-export default SearchBar;
+const SearchInput = ({ value, handleChange }: Props) => {
+  return (
+    <input
+      value={value}
+      onChange={handleChange}
+      type="text"
+      placeholder="Search by user name..."
+    />
+  );
+};
+
+export default SearchInput;

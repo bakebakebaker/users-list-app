@@ -1,9 +1,17 @@
 import React from "react";
 import { UserList } from "./views";
-import "./App.css";
+import StyleConfig from "./style-config/style-config";
+import { Wrapper } from "./common-components";
 
 const App = () => {
-  return <UserList />;
+  return (
+    <>
+      <StyleConfig />
+      <Wrapper>
+        <UserList />
+      </Wrapper>
+    </>
+  );
 };
 
 export default App;

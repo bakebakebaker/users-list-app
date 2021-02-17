@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, SyntheticEvent } from "react";
+import { Spinner, Wrapper } from "../../common-components";
+import { User } from "../../types";
 import List from "./List";
+import SearchBar from "./SearchBar";
 
 const UsersList = () => {
-  //todo types
-  const [users, setUsers] = useState<any>([]);
-  const [isError, setError] = useState<boolean>(false);
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [searchInput, setSearchInput] = useState<string>("");
 
   useEffect(() => {
@@ -12,14 +14,16 @@ const UsersList = () => {
     const { signal } = abortController;
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users",
-          { signal }
-        );
-        const data = await response.json();
-
+        const res = await fetch("https://jsonplaceholder.typicode.com/users", {
+          signal,
+        });
+        const data = await res.json();
         setUsers(data);
-      } catch (e) {}
+        console.log("data has been set");
+        setLoading(false);
+      } catch (e) {
+        console.log(e);
+      }
     };
 
     fetchData();
@@ -29,11 +33,31 @@ const UsersList = () => {
     };
   }, []);
 
+  const filteredUsers = useMemo(() => {
+    return users?.filter((user: User) => {
+      return user.name.toLowerCase().includes(searchInput.toLowerCase());
+    });
+  }, [users, searchInput]);
+
+  const getList = () => {
+    if (loading) {
+      return <Spinner />;
+    } else {
+      return <List items={filteredUsers} />;
+    }
+  };
+
   return (
-    <>
-      <h1>Users list</h1>
-      <List items={users} />
-    </>
+    <Wrapper>
+      <h1 title="main-header">Users list</h1>
+      <SearchBar
+        value={searchInput}
+        handleChange={(event: SyntheticEvent<HTMLInputElement>) => {
+          setSearchInput(event.currentTarget.value);
+        }}
+      />
+      {getList()}
+    </Wrapper>
   );
 };
 
