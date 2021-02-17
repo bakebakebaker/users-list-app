@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { User } from "../../../types";
 import ListItem from "./ListItem";
 
@@ -8,8 +9,8 @@ interface Props {
 
 const List = ({ items }: Props) => (
   <ol>
-    {items.map((user: User) => (
-      <ListItem item={user} />
+    {items.map((user: User, index: number) => (
+      <ListItem item={user} key={`${user.name} ${index}`} />
     ))}
   </ol>
 );
