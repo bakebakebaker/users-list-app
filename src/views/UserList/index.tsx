@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, SyntheticEvent } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import { Spinner, Wrapper, MainHeader } from "../../common-components";
 import { User } from "../../types";
 import List from "./List";
@@ -10,13 +10,9 @@ const UsersList = () => {
   const [searchInput, setSearchInput] = useState<string>("");
 
   useEffect(() => {
-    const abortController = new AbortController();
-    const { signal } = abortController;
     const fetchData = async () => {
       try {
-        const res = await fetch("https://jsonplaceholder.typicode.com/users", {
-          signal,
-        });
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
         const data = await res.json();
         setUsers(data);
         setLoading(false);
@@ -24,10 +20,6 @@ const UsersList = () => {
     };
 
     fetchData();
-
-    return () => {
-      abortController.abort();
-    };
   }, []);
 
   const filteredUsers = users?.filter((user: User) => {

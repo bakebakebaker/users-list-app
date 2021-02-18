@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { User } from "../../../types";
 import ListItem from "./ListItem";
 
