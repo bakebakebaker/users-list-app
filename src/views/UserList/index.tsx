@@ -20,9 +20,7 @@ const UsersList = () => {
         const data = await res.json();
         setUsers(data);
         setLoading(false);
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     };
 
     fetchData();

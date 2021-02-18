@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { User } from "../../../types";
 import ListItem from "./ListItem";
 
-interface Props {
+export interface ListProps {
   items: User[];
 }
 
-const List = ({ items }: Props) => (
-  <ol>
+const List = ({ items }: ListProps) => (
+  <ol data-testid="user-ordered-list">
     {items.map((user: User, index: number) => (
       <ListItem item={user} key={`${user.name} ${index}`} />
     ))}

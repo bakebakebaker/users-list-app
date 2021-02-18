@@ -2,7 +2,7 @@ import React, { SyntheticEvent } from "react";
 import styled from "styled-components";
 import { variables } from "../../../style-config/variables";
 
-interface Props {
+export interface SearchBarProps {
   value: string;
   handleChange: (event: SyntheticEvent<HTMLInputElement>) => void;
 }
@@ -14,7 +14,7 @@ const StyledInput = styled.input`
   min-width: 250px;
 `;
 
-const SearchInput = ({ value, handleChange }: Props) => {
+const SearchInput = ({ value, handleChange }: SearchBarProps) => {
   return (
     <StyledInput
       value={value}
@@ -22,6 +22,7 @@ const SearchInput = ({ value, handleChange }: Props) => {
       type="text"
       placeholder="Search by user name..."
       title="search-bar"
+      data-testid="search-bar"
     />
   );
 };
