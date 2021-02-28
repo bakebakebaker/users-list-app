@@ -21,7 +21,6 @@ const SearchInput = ({ value, handleChange }: SearchBarProps) => {
       onChange={handleChange}
       type="text"
       placeholder="Search by user name..."
-      title="search-bar"
       data-testid="search-bar"
     />
   );

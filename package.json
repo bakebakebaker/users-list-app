@@ -44,6 +44,6 @@
     ]
   },
   "devDependencies": {
-    "jest-fetch-mock": "^3.0.1"
+    "jest-fetch-mock": "^3.0.3"
   }
 }
